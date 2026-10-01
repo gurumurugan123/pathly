@@ -24,7 +24,6 @@ services:
     name: jobgraph-frontend
     env: static
     rootDir: frontend
-    plan: free
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
     routes:
@@ -33,10 +32,8 @@ services:
         destination: "/index.html"
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: jobgraph-backend
-          property: host
+        sync: false
+
 
 databases:
   - name: jobgraph-db
