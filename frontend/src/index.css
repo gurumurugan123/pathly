@@ -1,0 +1,378 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   PATHLY — Design System Tokens
+   "Your Career, Connected."
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --pathly-indigo: #5B5FEF;
+  --pathly-indigo-dark: #4347D9;
+  --pathly-violet: #7C3AED;
+
+  /* Surfaces (Light mode) */
+  --bg-app: #F5F6FA;
+  --bg-sidebar: #0F1117;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8F9FE;
+  --bg-input: #FFFFFF;
+  --bg-muted: #F1F3F9;
+
+  /* Borders */
+  --border-subtle: #E4E7F0;
+  --border-focus: #5B5FEF;
+
+  /* Text */
+  --text-primary: #0F1117;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --text-on-dark: #F8FAFC;
+
+  /* Navy for sidebar */
+  --navy-900: #0F1117;
+  --navy-800: #161B27;
+  --navy-700: #1E2538;
+  --navy-600: #2D3452;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.08), 0 2px 6px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 30px 0 rgb(0 0 0 / 0.10), 0 4px 12px -4px rgb(0 0 0 / 0.08);
+  --shadow-brand: 0 4px 20px 0 rgb(91 95 239 / 0.30);
+}
+
+/* ============================================================
+   DARK MODE — triggered by .dark class on <html>
+   ============================================================ */
+html.dark {
+  --bg-app: #0A0D14;
+  --bg-sidebar: #080B11;
+  --bg-card: #111520;
+  --bg-card-hover: #161B2A;
+  --bg-input: #1A2035;
+  --bg-muted: #161B2A;
+
+  --border-subtle: #1E2538;
+  --border-focus: #7C7FFF;
+
+  --text-primary: #EEF0F8;
+  --text-secondary: #8896B0;
+  --text-muted: #4B5675;
+
+  --navy-900: #080B11;
+  --navy-800: #0F1420;
+  --navy-700: #161B2A;
+  --navy-600: #1E2538;
+}
+
+/* ============================================================
+   TAILWIND v4 Theme — custom token bridge
+   ============================================================ */
+@theme {
+  --color-navy-900: #0F1117;
+  --color-navy-800: #161B27;
+  --color-navy-700: #1E2538;
+  --color-navy-600: #2D3452;
+
+  --color-brand-50: #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-500: #5B5FEF;
+  --color-brand-600: #4347D9;
+  --color-brand-700: #3730C4;
+
+  --color-pathly-50: #EEF2FF;
+  --color-pathly-500: #5B5FEF;
+  --color-pathly-600: #4347D9;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ============================================================
+   PATHLY INPUT
+   ============================================================ */
+.pathly-input {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pathly-input:focus {
+  border-color: var(--pathly-indigo);
+  box-shadow: 0 0 0 3px rgb(91 95 239 / 0.15);
+}
+
+.pathly-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   PATHLY BUTTON
+   ============================================================ */
+.pathly-btn-primary {
+  background: linear-gradient(135deg, #5B5FEF, #7C3AED);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px 0 rgb(91 95 239 / 0.35);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pathly-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgb(91 95 239 / 0.45);
+}
+
+.pathly-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.pathly-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pathly-btn-secondary {
+  background-color: var(--bg-muted);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-subtle);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pathly-btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-card-hover);
+  border-color: #A0A7C0;
+}
+
+.pathly-btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   REACT FLOW customizations
+   ============================================================ */
+.react-flow__renderer {
+  background-color: var(--bg-app) !important;
+}
+
+.react-flow__controls {
+  box-shadow: var(--shadow-md) !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.react-flow__controls-button {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--bg-muted) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes ringPulse {
+  0% { box-shadow: 0 0 0 0 rgba(91, 95, 239, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(91, 95, 239, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(91, 95, 239, 0); }
+}
+
+.node-pulse {
+  animation: ringPulse 2s infinite;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ============================================================
+   SCROLLBARS
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ============================================================
+   DARK MODE overrides for Tailwind utility classes
+   ============================================================ */
+html.dark body { overflow: hidden; }
+html.dark .bg-white { background-color: var(--bg-card) !important; }
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/80 { background-color: var(--bg-muted) !important; }
+html.dark .bg-slate-100 { background-color: var(--bg-app) !important; }
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80 { border-color: var(--border-subtle) !important; }
+html.dark .text-slate-900 { color: var(--text-primary) !important; }
+html.dark .text-slate-700 { color: var(--text-secondary) !important; }
+html.dark .text-slate-600 { color: var(--text-secondary) !important; }
+html.dark .text-slate-500 { color: var(--text-muted) !important; }
+html.dark input:not([class*="pathly"]),
+html.dark textarea:not([class*="pathly"]),
+html.dark select {
+  background-color: var(--bg-input) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ============================================================
+   AUTH FORM COMPONENTS — shared by LoginPage & RegisterPage
+   ============================================================ */
+.pathly-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 0.875rem;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.pathly-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.pathly-input:focus {
+  border-color: var(--pathly-indigo);
+  box-shadow: 0 0 0 3px rgba(91, 95, 239, 0.12);
+}
+
+.pathly-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pathly-btn-primary {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #5B5FEF 0%, #7C3AED 100%);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 16px rgba(91, 95, 239, 0.35);
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.pathly-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(91, 95, 239, 0.45);
+}
+
+.pathly-btn-primary:active:not(:disabled) {
+  transform: translateY(0px);
+  box-shadow: 0 2px 8px rgba(91, 95, 239, 0.3);
+}
+
+.pathly-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pathly-btn-secondary {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.pathly-btn-secondary:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: #C4C7FF;
+}
+
+.pathly-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
